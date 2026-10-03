@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: server
+    
+# Available levels: TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF
+logging:
+    level:
+        ru.ulstu.is.server.*: DEBUG
