@@ -8,15 +8,21 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 public class CarDto {
     @JsonProperty(access = Access.READ_ONLY)
     private Integer id;
-    private String brand;
-    private String model;
+    @JsonProperty (access = Access.WRITE_ONLY)
+    private Integer makeId;
+    @JsonProperty (access = Access.READ_ONLY)
+    private MakeDto make;
+    @JsonProperty (access = Access.WRITE_ONLY)
+    private Integer modelId;
+    @JsonProperty (access = Access.READ_ONLY)
+    private ModelDto model;
     private LocalDate year;
     private Integer price;
     private Integer mileage;
     private String bodyType;
     private String color;
     @JsonProperty("image")
-    private String image;
+    private String photo;
     private String description;
 
     public CarDto() {
@@ -24,8 +30,8 @@ public class CarDto {
 
     public CarDto(
             Integer id, 
-            String brand, 
-            String model,
+            Integer makeId, 
+            Integer modelId,
             LocalDate year,
             Integer price,
             Integer mileage,
@@ -33,8 +39,8 @@ public class CarDto {
             String color,
             String description){
         this.id = id;
-        this.brand = brand;
-        this.model = model;
+        this.makeId = makeId;
+        this.modelId = modelId;
         this.year = year;
         this.price = price;
         this.mileage = mileage;
@@ -43,6 +49,7 @@ public class CarDto {
         this.description = description;
     }
 
+    // Id
     public Integer getId(){
         return id;
     }
@@ -51,22 +58,41 @@ public class CarDto {
         this.id = id;
     }
 
-    public String getBrand(){
-        return brand;
+    // Make
+    public Integer getMakeId(){
+        return makeId;
     }
 
-    public void setBrand(String brand){
-        this.brand = brand;
+    public void setMakeId(Integer makeId){
+        this.makeId = makeId;
     }
 
-    public String getModel(){
+    public MakeDto getMake(){
+        return make;
+    }
+
+    public void setMake(MakeDto make){
+        this.make = make;
+    }
+
+    // Model
+    public Integer getModelId(){
+        return modelId;
+    }
+
+    public void setModelId(Integer modelId){
+        this.modelId = modelId;
+    }
+
+    public ModelDto getModel(){
         return model;
     }
 
-    public void setModel(String model){
+    public void setModel(ModelDto model){
         this.model = model;
     }
 
+    // Year
     public LocalDate getYear(){
         return year;
     }
@@ -75,6 +101,7 @@ public class CarDto {
         this.year = year;
     }
     
+    // Price
     public Integer getPrice(){
         return price;
     }
@@ -83,6 +110,7 @@ public class CarDto {
         this.price = price;
     }
 
+    // Mileage
     public Integer getMileage(){
         return mileage;
     }
@@ -91,6 +119,7 @@ public class CarDto {
         this.mileage = mileage;
     }
 
+    // BodyType
     public String getBodyType(){
         return bodyType;
     }
@@ -98,7 +127,8 @@ public class CarDto {
     public void setBodyType(String bodyType){
         this.bodyType = bodyType;
     }
-
+ 
+    // Color
     public String getColor(){
         return color;
     }
@@ -107,14 +137,16 @@ public class CarDto {
         this.color = color;
     }
 
-    public String getImage(){
-        return image;
+    // Image
+    public String getPhoto(){
+        return photo;
     }
 
-    public void setImage(String image){
-        this.image = image;
+    public void setPhoto(String image){
+        this.photo = image;
     }
 
+    // Description
     public String getDescription(){
         return description;
     }
@@ -125,8 +157,8 @@ public class CarDto {
 
     @Override 
     public String toString(){
-        return "CarDto [brand=" + brand + ", model=" + model + ", year=" + year +
+        return "CarDto [makeId=" + makeId + ", modelId=" + modelId + ", year=" + year +
                 ", price=" + price + ", mileage=" + mileage + ", bodyType=" + bodyType +
-                ", color=" + color + ", image=" + image + ", description=" + description;
+                ", color=" + color + ", image=" + photo + ", description=" + description;
     }
 }
